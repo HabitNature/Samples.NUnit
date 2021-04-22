@@ -42,8 +42,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaculatorTests.cs" />
+    <Compile Include="Datas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CellAddressCheckerTests.cs" />
+    <Compile Include="SamplesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NUnit">

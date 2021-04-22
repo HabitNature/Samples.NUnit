@@ -30,5 +30,73 @@ namespace SamplesNUnit
             // Assert
             return result;
         }
+
+        [TestCase("A1")]
+        [TestCase("a1")]
+        [TestCase("A65535")]
+        [TestCase("a65535")]
+        public void Check_ValidAddress_ReturnTrue(
+            string cellAddress)
+        {
+            // Arrange
+            CellAddressChecker checker = new CellAddressChecker();
+
+            // Act 
+            bool result = checker.Check(cellAddress);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void Check_ValidAddress_ReturnTrueV2(
+                    [Values("A", "a")] string column,
+                    [Values(1, 65535)] int row)
+        {
+            // Arrange
+            CellAddressChecker checker = new CellAddressChecker();
+
+            // Act 
+            string cellAddress = $"{column}{row}";
+
+            bool result = checker.Check(cellAddress);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void Check_ValidAddress_ReturnTrueV3(
+            [Values("A", "a")] string column,
+            [Random(1, 65535, 2)] int row)
+        {
+            // Arrange
+            CellAddressChecker checker = new CellAddressChecker();
+
+            // Act 
+            string cellAddress = $"{column}{row}";
+
+            bool result = checker.Check(cellAddress);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void Check_ValidAddress_ReturnTrueV4(
+            [Values("A", "a")] string column,
+            [Range(1, 65535, 100)] int row)
+        {
+            // Arrange
+            CellAddressChecker checker = new CellAddressChecker();
+
+            // Act 
+            string cellAddress = $"{column}{row}";
+
+            bool result = checker.Check(cellAddress);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }
